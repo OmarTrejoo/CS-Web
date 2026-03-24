@@ -21,7 +21,7 @@ export const PRODUCT_CATEGORIES: ProductCategory[] = [
     title: "Periféricos",
     description:
       "Teclados, mouse, bocinas, audífonos, cámaras web y accesorios para trabajo, estudio o gaming.",
-    image: "/assets/images/Productos/perifericos.jpg",
+    image: "/assets/images/Productos/cables.jpg",
   },
   {
     title: "Energía y Almacenamiento",

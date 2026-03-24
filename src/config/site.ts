@@ -1,7 +1,7 @@
 export const SITE = {
   name: "CS Computadoras y Sistemas",
-  phoneRaw: "522281694931",
-  phoneDisplay: "+52 228 169 4931",
+  phoneRaw: "522285465246",
+  phoneDisplay: "+52 228 546 5246",
   city: "Xalapa, Veracruz",
   country: "México",
   hours: "Lun – Sáb · 10:00 – 18:00",
