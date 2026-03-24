@@ -42,7 +42,7 @@ export default function Products() {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="group relative min-w-[82%] snap-start overflow-hidden rounded-xl bg-[var(--color-bg)] transition-shadow duration-300 hover:shadow-[0_14px_38px_rgba(9,13,9,0.12)] sm:min-w-0"
             >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-zinc-100">
+              <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                   src={cat.image}
                   alt={cat.title}
