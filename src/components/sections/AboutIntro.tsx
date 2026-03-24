@@ -31,8 +31,7 @@ export default function AboutIntro() {
         transition={{ duration: 0.7, ease: EASING }}
         className="mx-auto max-w-5xl px-5 text-center lg:px-8"
       >
-        <p className="eyebrow text-[var(--color-text-3)]">Quiénes somos</p>
-        <h2 className="mt-3 text-[clamp(28px,3.8vw,44px)] font-bold leading-[0.95] text-[var(--color-text)]">
+        <h2 className="text-[clamp(28px,3.8vw,44px)] font-bold leading-[0.95] text-[var(--color-text)]">
           CS Computadoras y Sistemas
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-[var(--color-text-2)]">

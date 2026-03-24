@@ -16,9 +16,6 @@ export default function Products() {
           variants={stagger}
           className="mb-4"
         >
-          <p className="eyebrow mb-2 text-[var(--color-text-3)]">
-            Venta de accesorios
-          </p>
           <h2 className="text-[clamp(34px,4.8vw,54px)] font-bold leading-[0.95] text-[var(--color-text)]">
             Accesorios y componentes
             <br />

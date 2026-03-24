@@ -7,9 +7,9 @@ import { SITE, buildWhatsAppUrl } from "@/config/site";
 import { QUOTE_SERVICES } from "@/data/services";
 import { fadeUp, stagger } from "@/lib/animations";
 
-const MAP_EMBED_URL = `https://www.google.com/maps?q=${encodeURIComponent(
-  "Calle H. Galeana 1 Col Centro Xalapa Mercado Sauces Veracruz",
-)}&output=embed`;
+const MAP_EMBED_URL = `https://www.google.com/maps?hl=es&q=${encodeURIComponent(
+  "CS Computadoras y Sistemas Xalapa",
+)}&z=17&output=embed`;
 
 export default function Quote() {
   const [name, setName] = useState("");
@@ -46,7 +46,6 @@ export default function Quote() {
         >
           {/* Map column */}
           <motion.div variants={fadeUp} className="space-y-4">
-            <p className="eyebrow text-[var(--color-text-3)]">Ubicación</p>
             <h3 className="text-[clamp(28px,3.5vw,40px)] font-bold leading-[0.95] text-[var(--color-text)]">
               Estamos en
               <span className="text-[var(--color-brand)]"> Xalapa.</span>
@@ -80,15 +79,17 @@ export default function Quote() {
             </div>
           </motion.div>
 
-          {/* Form column */}
-          <motion.div variants={fadeUp} className="space-y-5">
-            <div className="rounded-2xl border border-[var(--color-border)] bg-white p-7 lg:p-8">
-              <p className="eyebrow text-[var(--color-text-3)]">Contacto</p>
-              <h4 className="mt-2 text-[clamp(22px,2.8vw,30px)] font-bold leading-[1.05] text-[var(--color-text)]">
+          {/* Form column — intro + campos en un solo contenedor (menos fragmentación visual) */}
+          <motion.div variants={fadeUp}>
+            <motion.form
+              onSubmit={handleSubmit}
+              className="rounded-2xl border border-[var(--color-border)] bg-white p-7 lg:p-8"
+            >
+              <h4 className="text-[clamp(22px,2.8vw,30px)] font-bold leading-[1.05] text-[var(--color-text)]">
                 WhatsApp o formulario
               </h4>
               <p className="mt-3 text-[14px] leading-relaxed text-[var(--color-text-2)]">
-                Puedes escribirnos directo al{" "}
+                Escríbenos directo al{" "}
                 <a
                   href={waDirect}
                   target="_blank"
@@ -97,17 +98,13 @@ export default function Quote() {
                 >
                   {SITE.phoneDisplay}
                 </a>
-                . Si prefieres detallar el servicio en un solo paso, usa el
-                formulario y se armará el mensaje en WhatsApp automáticamente.
+                , o completa los datos y generamos el mensaje en WhatsApp por ti.
               </p>
-            </div>
 
-            <motion.form
-              onSubmit={handleSubmit}
-              className="rounded-2xl border border-[var(--color-border)] bg-white p-7 lg:p-8"
-            >
+              <hr className="my-6 border-0 border-t border-[var(--color-border)]" />
+
               <p className="text-[13px] font-medium text-[var(--color-text-2)]">
-                Cotización con contexto
+                Datos de la cotización
               </p>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 <label className="flex flex-col text-[13px] font-medium text-[var(--color-text-2)]">

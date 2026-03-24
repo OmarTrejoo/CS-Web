@@ -17,6 +17,22 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  /* Precarga el resto de fondos para que el crossfade no espere descarga en móvil */
+  useEffect(() => {
+    const preload = () => {
+      HERO_SERVICES.forEach((s) => {
+        const img = document.createElement("img");
+        img.src = s.image;
+      });
+    };
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(preload, { timeout: 2500 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const t = setTimeout(preload, 200);
+    return () => clearTimeout(t);
+  }, []);
+
   const current = HERO_SERVICES[bgIndex];
 
   return (
@@ -39,7 +55,7 @@ export default function Hero() {
               src={current.image}
               alt={`Servicio: ${current.label}`}
               fill
-              priority
+              priority={bgIndex === 0}
               sizes="100vw"
               className="scale-[1.03] object-cover blur-[1.5px]"
             />
