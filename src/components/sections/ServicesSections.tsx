@@ -7,6 +7,10 @@ import { Plus, Minus } from "lucide-react";
 import { SERVICES } from "@/data/services";
 import { EASING } from "@/lib/animations";
 
+/* 1×1 oscuro — aparece mientras carga cada imagen de servicio */
+const SERVICE_BLUR =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
+
 export default function ServicesSections() {
   const [active, setActive] = useState(0);
   const [mobileOpen, setMobileOpen] = useState<number | null>(0);
@@ -120,6 +124,9 @@ export default function ServicesSections() {
                 alt={SERVICES[active].imgAlt}
                 fill
                 sizes="50vw"
+                quality={80}
+                placeholder="blur"
+                blurDataURL={SERVICE_BLUR}
                 className="object-cover object-center"
                 priority={active === 0}
               />
@@ -196,12 +203,16 @@ export default function ServicesSections() {
                   className="overflow-hidden"
                 >
                   <div className="pb-8">
-                    <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-xl bg-[var(--color-dark)] shadow-md">
+                    <div className="relative mb-5 aspect-[16/9] w-full overflow-hidden rounded-xl bg-[var(--color-dark-2)] shadow-md">
                       <Image
                         src={s.img}
                         alt={s.imgAlt}
                         fill
                         sizes="90vw"
+                        quality={78}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={SERVICE_BLUR}
                         className="object-cover object-center"
                       />
                       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />

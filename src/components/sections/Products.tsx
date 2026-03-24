@@ -5,6 +5,10 @@ import Image from "next/image";
 import { PRODUCT_CATEGORIES } from "@/data/products";
 import { fadeUp, stagger } from "@/lib/animations";
 
+/** Mini placeholder para `placeholder="blur"` (sin estirar layout mientras llega la foto) */
+const IMAGE_BLUR =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mO8/J+xHgAGgwJ/l4Pg6QAAAABJRU5ErkJggg==";
+
 export default function Products() {
   return (
     <section id="productos" className="bg-white py-18 lg:py-24">
@@ -41,13 +45,17 @@ export default function Products() {
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
               className="group relative min-w-[82%] snap-start overflow-hidden rounded-xl bg-[var(--color-bg)] transition-shadow duration-300 hover:shadow-[0_14px_38px_rgba(9,13,9,0.12)] sm:min-w-0"
             >
-              <div className="relative h-40 w-full overflow-hidden">
+              <div className="relative aspect-square w-full overflow-hidden bg-[var(--color-bg-alt)]">
                 <Image
                   src={cat.image}
                   alt={cat.title}
                   fill
-                  sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width:640px) 85vw, (max-width:1024px) 45vw, 28vw"
+                  quality={78}
+                  placeholder="blur"
+                  blurDataURL={IMAGE_BLUR}
+                  fetchPriority="low"
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-dark)]/60 via-transparent to-transparent" />
               </div>

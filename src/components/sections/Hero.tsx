@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 import { HERO_SERVICES } from "@/data/services";
 import { EASING } from "@/lib/animations";
 
+/* 1×1 gris oscuro — fondo mientras carga la primera imagen del hero */
+const HERO_BLUR =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
+
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0);
 
@@ -17,19 +21,20 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  /* Precarga el resto de fondos para que el crossfade no espere descarga en móvil */
+  /* Precarga los fondos restantes en segundo plano */
   useEffect(() => {
     const preload = () => {
-      HERO_SERVICES.forEach((s) => {
-        const img = document.createElement("img");
-        img.src = s.image;
+      HERO_SERVICES.slice(1).forEach((s) => {
+        const el = document.createElement("img");
+        el.src = s.image;
+        el.fetchPriority = "low";
       });
     };
     if ("requestIdleCallback" in window) {
       const id = window.requestIdleCallback(preload, { timeout: 2500 });
       return () => window.cancelIdleCallback(id);
     }
-    const t = setTimeout(preload, 200);
+    const t = setTimeout(preload, 400);
     return () => clearTimeout(t);
   }, []);
 
@@ -40,7 +45,7 @@ export default function Hero() {
       id="inicio"
       className="relative min-h-screen overflow-hidden bg-[var(--color-dark)] pt-[68px]"
     >
-      {/* Background carousel — crossfade between service images */}
+      {/* Background carousel */}
       <div className="absolute inset-0">
         <AnimatePresence initial={false} mode="sync">
           <motion.div
@@ -53,10 +58,14 @@ export default function Hero() {
           >
             <Image
               src={current.image}
-              alt={`Servicio: ${current.label}`}
+              alt={`Servicio de ${current.label} — CS Computadoras y Sistemas Xalapa`}
               fill
               priority={bgIndex === 0}
+              fetchPriority={bgIndex === 0 ? "high" : "low"}
+              quality={72}
               sizes="100vw"
+              placeholder="blur"
+              blurDataURL={HERO_BLUR}
               className="scale-[1.03] object-cover blur-[1.5px]"
             />
           </motion.div>
