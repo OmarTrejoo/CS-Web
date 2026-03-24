@@ -7,9 +7,6 @@ import { useEffect, useState } from "react";
 import { HERO_SERVICES } from "@/data/services";
 import { EASING } from "@/lib/animations";
 
-/* 1×1 gris oscuro — fondo mientras carga la primera imagen del hero */
-const HERO_BLUR =
-  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
 
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0);
@@ -64,8 +61,6 @@ export default function Hero() {
               fetchPriority={bgIndex === 0 ? "high" : "low"}
               quality={72}
               sizes="100vw"
-              placeholder="blur"
-              blurDataURL={HERO_BLUR}
               className="scale-[1.03] object-cover blur-[1.5px]"
             />
           </motion.div>
