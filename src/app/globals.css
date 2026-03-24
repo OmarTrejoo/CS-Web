@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* ── Surfaces ── */
+  --color-bg: #F2F4EE;
+  --color-bg-alt: #E6EAE0;
+  --color-white: #FFFFFF;
+
+  /* ── Dark scale ── */
+  --color-dark: #090D09;
+  --color-dark-2: #101610;
+  --color-dark-3: #1A261A;
+  --color-dark-border: #1F2F1F;
+
+  /* ── Brand ── */
+  --color-brand: #3DA825;
+  --color-brand-hover: #2E9418;
+  --color-brand-soft: #EBF7E4;
+  --color-accent-on-dark: #F2D14C;
+
+  /* ── CTA (= brand) ── */
+  --color-cta: #3DA825;
+  --color-cta-hover: #2E9418;
+  --color-cta-ring: rgba(61, 168, 37, 0.30);
+  --color-cta-shadow: rgba(61, 168, 37, 0.40);
+
+  /* ── Text ── */
+  --color-text: #0A0F0A;
+  --color-text-2: #546054;
+  --color-text-3: #8C9E8C;
+
+  /* ── Borders ── */
+  --color-border: #D4DED4;
+  --color-border-2: #DFE9DF;
+
+  /* ── Fonts ── */
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
+}
+
+/* ═══════════════════════════ Base ═══════════════════════════ */
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+p { text-wrap: pretty; }
+
+::selection {
+  background: #c8f0b8;
+  color: #0A0F0A;
+}
+
+/* ═══════════════════════════ Buttons ═══════════════════════════ */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-cta);
+  color: var(--color-white);
+  font-weight: 600;
+  transition: background-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.btn-primary:hover {
+  background: var(--color-cta-hover);
+  box-shadow: 0 8px 28px var(--color-cta-shadow);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-weight: 600;
+  transition: color 200ms ease, border-color 200ms ease, background-color 200ms ease;
+}
+.btn-secondary:hover {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.90);
+  font-weight: 600;
+  transition: all 200ms ease;
+}
+.btn-dark:hover {
+  border-color: rgba(255, 255, 255, 0.40);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ═══════════════════════════ Chips ═══════════════════════════ */
+
+.chip-dark {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.375rem 0.875rem;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  transition: background-color 200ms ease;
+}
+
+/* ═══════════════════════════ Forms ═══════════════════════════ */
+
+.input-control {
+  margin-top: 0.375rem;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  padding: 0.75rem 1rem;
+  font-size: 14px;
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.input-control:focus {
+  border-color: var(--color-brand);
+  box-shadow: 0 0 0 2px var(--color-cta-ring);
+}
+
+/* ═══════════════════════════ Utilities ═══════════════════════════ */
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+/* ═══════════════════════════ Accessibility ═══════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
